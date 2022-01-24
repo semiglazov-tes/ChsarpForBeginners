@@ -1,2 +1,2 @@
-Моя первая программа на GitHub
+Домашние задания по курсу ChsarpForBeginners
 # ChsarpForBeginners
