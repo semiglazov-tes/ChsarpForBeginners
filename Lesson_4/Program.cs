@@ -15,8 +15,8 @@
             operation = Console.ReadLine();
             Console.Write("Введите второе число:");
             secondNumber = Convert.ToDouble(Console.ReadLine());
-            RunACalculation(firstNumber,secondNumber,operation);
-            MakeDecisionToProceedWithTheCalculation(correctOperation,needOperation);
+            RunACalculation(firstNumber, secondNumber, operation);
+            MakeDecisionToProceedWithTheCalculation(ref correctOperation, ref needOperation);
             correctOperation = false;
         }
         while (needOperation == true);
@@ -42,19 +42,16 @@
                 break;
         }
     }
-    public static bool MakeDecisionToProceedWithTheCalculation(bool correctOperation,bool needOperation)
+    public static void MakeDecisionToProceedWithTheCalculation(ref bool correctOperation, ref bool needOperation)
     {
+        string returnOperation;
         while (correctOperation == false)
         {
-            string returnOperation;
-            bool needOperation 
             Console.Write("Пролжить вычисления(да/нет)?:");
             returnOperation = Console.ReadLine().ToLower();
             if (returnOperation == "да")
             {
-                needOperation = true;
                 correctOperation = true;
-                return needOperatio
             }
             else if (returnOperation == "нет")
             {
@@ -67,4 +64,4 @@
             }
         }
     }
-}    
+}
