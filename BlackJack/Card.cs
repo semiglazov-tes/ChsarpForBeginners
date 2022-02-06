@@ -15,6 +15,7 @@ namespace BlackJack
 
         public enum Suits
         {
+            //3,4,5,6- это представление мастей в кодах ASCII
             Hearts=3,
             Diamonds,
             Clubs,
@@ -31,7 +32,8 @@ namespace BlackJack
             Eight,
             Nine,
             Ten,
-            Jack=74,
+            //74,81,75,65- это представление латинских букв J,Q,K,A в кодах ASCII
+            Jack = 74,
             Queen=81,
             King=75,
             Ace=65
