@@ -10,39 +10,40 @@ namespace BlackJack
 {
     internal class Deck
     {
-        private Card[] _deck;
+        private List<Card> _deck=new List<Card>();
         public Deck() 
         {
 
-            //CreateDeck();   
+            CreateDeck();   
         }
-        public Deck CreateDeck()
+        public void CreateDeck()
         {
-            string[] suits = (string[])Enum.GetNames(typeof(Suits));
-            string[] rank = (string[])Enum.GetNames(typeof(Suits));
+            foreach (Suits suit in Enum.GetValues(typeof(Suits)))
+            {
+                foreach (Ranks rank  in Enum.GetValues(typeof(Ranks)))
+                {
+                    Card card = new Card(suit, rank);
+                    _deck.Add(card);
+                }
+            }
+        }
+        public void DisplayDeck()
+        {
+            foreach (Card card in _deck)
+            {
+                card.DisplayCard();
+            }
+        }
+        public void ShuffleTheDeck()
+        {
+            Random random = new Random();
+            for (int i = 0; i <_deck.Count-1 ; i++)
+            {
+                int randomIndex = random.Next(52);
+                Card tempCard = _deck[i];
+                _deck[i] = _deck[randomIndex];
+                _deck[randomIndex] = tempCard;
+            }
         }
     }
 }
-/*public enum Suits
-{
-    Hearts = 3,
-    Diamonds,
-    Clubs,
-    Spades
-}
-public enum Ranks
-{
-    Two = 2,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Jack = 74,
-    Queen = 81,
-    King = 75,
-    Ace = 65
-}*/
