@@ -10,7 +10,11 @@ class Program
     {
         Deck deck = new Deck();
         deck.ShuffleTheDeck();
-        deck.DisplayDeck();
+        Player TestPlayer = new Player("Алексей");
+        Dealer TestDealer = new Dealer("Дилер");
+        Card testCard = TestDealer.IssueACard(deck);
+        TestPlayer.takeACard(testCard);
+        TestPlayer.DisplayPlayerInfo();
         
     }
 }
