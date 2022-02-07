@@ -10,12 +10,14 @@ namespace BlackJack
 {
     internal class Deck
     {
-        private List<Card> _deck=new List<Card>();
+        private List<Card> _listCard;
+        public List<Card> ListCard { get { return _listCard; } }
         public Deck() 
         {
-
+            _listCard = new List<Card>();
             CreateDeck();   
         }
+        //создание колоды
         public void CreateDeck()
         {
             foreach (Suits suit in Enum.GetValues(typeof(Suits)))
@@ -23,26 +25,28 @@ namespace BlackJack
                 foreach (Ranks rank  in Enum.GetValues(typeof(Ranks)))
                 {
                     Card card = new Card(suit, rank);
-                    _deck.Add(card);
+                    _listCard.Add(card);
                 }
             }
         }
+        //вывод колоды на консоль
         public void DisplayDeck()
         {
-            foreach (Card card in _deck)
+            foreach (Card card in _listCard)
             {
                 card.DisplayCard();
             }
         }
+        // перетосовать колоду
         public void ShuffleTheDeck()
         {
             Random random = new Random();
-            for (int i = 0; i <_deck.Count-1 ; i++)
+            for (int i = 0; i < _listCard.Count-1 ; i++)
             {
                 int randomIndex = random.Next(52);
-                Card tempCard = _deck[i];
-                _deck[i] = _deck[randomIndex];
-                _deck[randomIndex] = tempCard;
+                Card tempCard = _listCard[i];
+                _listCard[i] = _listCard[randomIndex];
+                _listCard[randomIndex] = tempCard;
             }
         }
     }
