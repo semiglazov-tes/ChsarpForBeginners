@@ -8,6 +8,7 @@ namespace BlackJack
 {
     internal class Dealer : Player
     {
+        private byte _nunmberOfRemainingCardsInTheDeclk = 52;
         public Dealer(string name="Дилер") : base(name)
         {
 
@@ -17,13 +18,14 @@ namespace BlackJack
         {
            List<Card> listCard=deck.ListCard;
            Random random = new Random();
-           int randomIndex = random.Next(52);
+           int randomIndex = random.Next(_nunmberOfRemainingCardsInTheDeclk);
+           _nunmberOfRemainingCardsInTheDeclk -= 1;
            Card issuingCard=listCard[randomIndex];
            listCard.RemoveAt(randomIndex);
             return issuingCard;
         }
         //Реализация поведения диалера(брать или не брать карту)
-        public bool DecisionMaking()
+        public override bool DecisionMaking()
         {
             Random random = new Random();
             if (TheSumOfCards <= 10)
@@ -37,8 +39,8 @@ namespace BlackJack
             }
             else { return false; }
         }
-          //Вывод информации о сумме карт и перечня карт Дилера
-          public override void DisplayPlayerInfo()
+        //Вывод информации о сумме карт и перечня карт Дилера во время игры
+        public override void DisplayPlayerInfo()
         {
             Console.WriteLine($"У {Name}a {TheSumOfCards} очков");
             Console.Write($"Карты {Name}a:");
