@@ -19,12 +19,32 @@ namespace BlackJack
             _playerDeck = new List<Card>();
             Name = name;   
         }
-        public virtual void takeACard(Card card)
+        public void takeACard(Card card)
         {
             PlayerDeck.Add(card);
-            byte card_rank = (byte)card.Rank;
+            byte card_rank;
+            if ((int)card.Rank >10 & card.Rank!=Card.Ranks.Ace)
+            {
+                card_rank = 1;
+            }
+            else if(card.Rank == Card.Ranks.Ace)
+            {
+                card_rank = 11;
+            }
+            else
+            {
+                card_rank = (byte)card.Rank;
+            }
             TheSumOfCards += card_rank;
         }
+        public void DisplayFinalPlayerDeck()
+        {
+            foreach (var card in _playerDeck)
+            {
+                card.DisplayCard();
+            }
+        }
         public abstract void DisplayPlayerInfo();
+        public abstract bool DecisionMaking();
     }
 }
