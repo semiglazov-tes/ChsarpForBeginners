@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfToDoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfToDoList"
+        mc:Ignorable="d"
+        Title="ToDoList" Height="500" Width="800" ResizeMode="NoResize"  WindowStyle="None" BorderBrush="Black">
+    <Grid Background="DeepSkyBlue" Height="500" Width="800" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="750"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" HorizontalAlignment="Right">
+            <Button DockPanel.Dock="Right" Background="Blue" Foreground="White" Opacity="0.6">Свернуть</Button>
+            <Button DockPanel.Dock="Right" Background="Blue" Foreground="White" Opacity="0.6">Весь экран</Button>
+            <Button DockPanel.Dock="Right" Background="Red" Foreground="White" Opacity="0.6">Закрыть</Button>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
